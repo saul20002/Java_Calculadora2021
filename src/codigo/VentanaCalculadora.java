@@ -177,10 +177,20 @@ public class VentanaCalculadora extends javax.swing.JFrame {
         botonPor.setFont(new java.awt.Font("Segoe UI Symbol", 1, 18)); // NOI18N
         botonPor.setForeground(new java.awt.Color(51, 51, 51));
         botonPor.setText("*");
+        botonPor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonPorActionPerformed(evt);
+            }
+        });
 
         botonDivision.setFont(new java.awt.Font("Segoe UI Symbol", 1, 18)); // NOI18N
         botonDivision.setForeground(new java.awt.Color(51, 51, 51));
         botonDivision.setText("/");
+        botonDivision.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonDivisionActionPerformed(evt);
+            }
+        });
 
         botonSuma.setFont(new java.awt.Font("Segoe UI Symbol", 1, 18)); // NOI18N
         botonSuma.setForeground(new java.awt.Color(51, 51, 51));
@@ -194,6 +204,11 @@ public class VentanaCalculadora extends javax.swing.JFrame {
         botonResta.setFont(new java.awt.Font("Segoe UI Symbol", 1, 18)); // NOI18N
         botonResta.setForeground(new java.awt.Color(51, 51, 51));
         botonResta.setText("-");
+        botonResta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonRestaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -335,11 +350,39 @@ public class VentanaCalculadora extends javax.swing.JFrame {
             operando1 = operando1 + operando2;
         }
         
+        //si la operación era la resta:
+        if (operacion.equals("-")){
+            operando1 = operando1 - operando2;
+        }
+        
+        //si la operación era la multiplicación:
+        if (operacion.equals("*")){
+            operando1 = operando1 * operando2;
+        }
+        
+        //si la operación era la división:
+        if (operacion.equals("/")){
+            operando1 = operando1 / operando2;
+        }
       
         //por último, muestro el resultado por pantalla
         display.setText(String.valueOf(operando1) );
     }//GEN-LAST:event_botonIgualActionPerformed
 
+    private void botonRestaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRestaActionPerformed
+        operacionPulsada("-");
+    }//GEN-LAST:event_botonRestaActionPerformed
+
+    private void botonPorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPorActionPerformed
+        operacionPulsada("*");
+    }//GEN-LAST:event_botonPorActionPerformed
+
+    private void botonDivisionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonDivisionActionPerformed
+        operacionPulsada("/");
+    }//GEN-LAST:event_botonDivisionActionPerformed
+
+    
+    
     /**
      * @param args the command line arguments
      */
